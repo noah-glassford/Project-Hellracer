@@ -14,6 +14,7 @@ public class CarController : MonoBehaviour {
     public List<AxleInfo> axleInfos; 
     public float maxMotorTorque;
     public float maxSteeringAngle;
+    public ParticleSystem driftParticle;
      
 
     private void Start() 
@@ -57,8 +58,19 @@ public class CarController : MonoBehaviour {
                 axleInfo.leftWheel.motorTorque = motor;
                 axleInfo.rightWheel.motorTorque = motor;
             }
-            ApplyLocalPositionToVisuals(axleInfo.leftWheel);
-            ApplyLocalPositionToVisuals(axleInfo.rightWheel);
+
+            if (axleInfo.leftWheel.GetGroundHit(out WheelHit hit))
+            {
+            if (hit.sidewaysSlip > .15)
+            {
+                driftParticle.gameObject.SetActive(true);
+            }
+            else
+            {
+                driftParticle.gameObject.SetActive(false);
+            }
+            }
+          
         }
     }
 }
