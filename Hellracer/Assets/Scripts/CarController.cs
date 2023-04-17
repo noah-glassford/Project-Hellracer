@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using TMPro;
 [System.Serializable]
 public class AxleInfo {
     public WheelCollider leftWheel;
@@ -14,8 +14,10 @@ public class CarController : MonoBehaviour {
     public List<AxleInfo> axleInfos; 
     public float maxMotorTorque;
     public float maxSteeringAngle;
-    public ParticleSystem driftParticle;
+    public ParticleSystem driftParticleLeft;
+     public ParticleSystem driftParticleRight;
      
+     public TextMeshProUGUI SpeedDisplay;
 
     private void Start() 
     {
@@ -39,9 +41,11 @@ public class CarController : MonoBehaviour {
         Vector3 position;
         Quaternion rotation;
         collider.GetWorldPose(out position, out rotation);
+
+      
      
         visualWheel.transform.position = position;
-        visualWheel.transform.localRotation = rotation;
+        visualWheel.transform.rotation = rotation;
     }
      
     public void FixedUpdate()
@@ -59,17 +63,32 @@ public class CarController : MonoBehaviour {
                 axleInfo.rightWheel.motorTorque = motor;
             }
 
-            if (axleInfo.leftWheel.GetGroundHit(out WheelHit hit))
+            ApplyLocalPositionToVisuals(axleInfo.leftWheel);
+            ApplyLocalPositionToVisuals(axleInfo.rightWheel);
+
+            //SpeedDisplay.text = transform.GetChild(0).GetComponent<Rigidbody>().velocity.magnitude.ToString();
+
+            WheelHit hit = new WheelHit();
+     
+            WheelCollider leftWheel = axleInfo.leftWheel;
+            WheelCollider rightWheel = axleInfo.rightWheel;
+     
+            if (leftWheel.GetGroundHit(out hit))
             {
-            if (hit.sidewaysSlip > .15)
+                if (hit.sidewaysSlip > .05 || hit.sidewaysSlip < -0.05)
+                   driftParticleLeft.gameObject.SetActive(true);
+                   else
+                   driftParticleLeft.gameObject.SetActive(false);
+            }
+
+            if (rightWheel.GetGroundHit(out hit))
             {
-                driftParticle.gameObject.SetActive(true);
+                if (hit.sidewaysSlip > .05 || hit.sidewaysSlip < -0.05)
+                   driftParticleRight.gameObject.SetActive(true);
+                   else
+                   driftParticleRight.gameObject.SetActive(false);
             }
-            else
-            {
-                driftParticle.gameObject.SetActive(false);
-            }
-            }
+
           
         }
     }
