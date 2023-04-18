@@ -11573,7 +11573,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1219268668}
-  m_LocalRotation: {x: 0.11371047, y: 0.69790405, z: -0.1137105, w: 0.6979039}
+  m_LocalRotation: {x: 0.113710456, y: 0.69790405, z: -0.113710485, w: 0.6979039}
   m_LocalPosition: {x: 51.037403, y: 2.889, z: 24.11039}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12597,6 +12597,146 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4254981101192267793, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25379336
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101192267793, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.79734266
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101192267793, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25379336
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101192267793, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.078397
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101192267793, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.294
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101192267793, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.05899
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101376986833, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25379336
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101376986833, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.79734266
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101376986833, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25379336
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101376986833, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.078397
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101376986833, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.294
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101376986833, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.052059
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101716342209, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25379336
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101716342209, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.79734266
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101716342209, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25379336
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101716342209, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.078398
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101716342209, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.294
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981101716342209, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.05899
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981103180991347, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25379336
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981103180991347, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.79734266
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981103180991347, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25379336
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981103180991347, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.078398
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981103180991347, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.294
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254981103180991347, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.05899
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821673457418014719, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821673457418014719, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 7500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821673457508622998, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821673457508622998, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 7500
+      objectReference: {fileID: 0}
     - target: {fileID: 4821673458989864585, guid: 6f6e4bde1ace49d4fb118b92d4368818,
         type: 3}
       propertyPath: m_RootOrder
@@ -14400,7 +14540,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494908533}
-  m_LocalRotation: {x: 0.11371047, y: 0.69790405, z: -0.1137105, w: 0.6979039}
+  m_LocalRotation: {x: 0.113710456, y: 0.69790405, z: -0.113710485, w: 0.6979039}
   m_LocalPosition: {x: 51.037403, y: 2.889, z: 24.11039}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18446,6 +18586,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 484e95a1def424c4b9f1ad821e0c226a, type: 3}
+--- !u!1 &2074191817 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4821673458989864630, guid: 6f6e4bde1ace49d4fb118b92d4368818,
+    type: 3}
+  m_PrefabInstance: {fileID: 1295058148}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2074191821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074191817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 4f275acabb6b2934c948d584e7fbe917,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 538db5b7-58bf-494b-94c8-7de755ad70ce
+    m_ActionName: CarController/Accelerate[/Keyboard/s,/Keyboard/w,/DualSenseGamepadHID/leftTrigger,/DualSenseGamepadHID/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e6eda2c3-8a98-4063-8183-2b37ed341ad2
+    m_ActionName: CarController/Steering[/Keyboard/a,/Keyboard/d,/DualSenseGamepadHID/leftStick/left,/DualSenseGamepadHID/leftStick/right]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: CarController
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 1494908537}
 --- !u!1001 &2081366828
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using TMPro;
 [System.Serializable]
 public class AxleInfo {
@@ -15,9 +16,12 @@ public class CarController : MonoBehaviour {
     public float maxMotorTorque;
     public float maxSteeringAngle;
     public ParticleSystem driftParticleLeft;
-     public ParticleSystem driftParticleRight;
-     
-     public TextMeshProUGUI SpeedDisplay;
+    public ParticleSystem driftParticleRight;
+    public TextMeshProUGUI SpeedDisplay;
+    private CarInputActions inputActions;
+    private PlayerInput playerInput;
+    private float motorInput;
+    private float steering;
 
     private void Start() 
     {
@@ -26,6 +30,10 @@ public class CarController : MonoBehaviour {
             axleInfo.leftWheel.ConfigureVehicleSubsteps(0.1f, 9, 15);
             axleInfo.rightWheel.ConfigureVehicleSubsteps(0.1f, 9, 15);
          }
+         playerInput = GetComponent<PlayerInput>();
+         inputActions = new CarInputActions();
+         inputActions.CarController.Enable();
+         inputActions.CarController.Accelerate.performed += Accelerate;
     }
 
     // finds the corresponding visual wheel
@@ -47,20 +55,40 @@ public class CarController : MonoBehaviour {
         visualWheel.transform.position = position;
         visualWheel.transform.rotation = rotation;
     }
+
+    private void Accelerate(InputAction.CallbackContext obj)
+    {
+        motorInput = maxMotorTorque * obj.ReadValue<float>();
+    }
      
+    private void Update() 
+    {
+         steering = maxSteeringAngle * inputActions.CarController.Steering.ReadValue<float>();
+    }
     public void FixedUpdate()
     {
-        float motor = maxMotorTorque * Input.GetAxis("Vertical");
-        float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
+       
      
-        foreach (AxleInfo axleInfo in axleInfos) {
-            if (axleInfo.steering) {
+        foreach (AxleInfo axleInfo in axleInfos) 
+        {
+            if (axleInfo.steering) 
+            {
                 axleInfo.leftWheel.steerAngle = steering;
                 axleInfo.rightWheel.steerAngle = steering;
             }
-            if (axleInfo.motor) {
-                axleInfo.leftWheel.motorTorque = motor;
-                axleInfo.rightWheel.motorTorque = motor;
+            if (axleInfo.motor)
+             {
+                Debug.Log(motorInput);
+                if (motorInput >= 0)
+                {
+                    axleInfo.leftWheel.motorTorque = motorInput;
+                    axleInfo.rightWheel.motorTorque = motorInput;
+                }
+                else if (motorInput < 0)
+                {
+                    axleInfo.leftWheel.motorTorque = motorInput / 8;
+                    axleInfo.rightWheel.motorTorque = motorInput / 8;
+                }
             }
 
             ApplyLocalPositionToVisuals(axleInfo.leftWheel);
@@ -75,7 +103,7 @@ public class CarController : MonoBehaviour {
      
             if (leftWheel.GetGroundHit(out hit))
             {
-                if (hit.sidewaysSlip > .05 || hit.sidewaysSlip < -0.05)
+                if (hit.sidewaysSlip > .15 || hit.sidewaysSlip < -0.15)
                    driftParticleLeft.gameObject.SetActive(true);
                    else
                    driftParticleLeft.gameObject.SetActive(false);
@@ -83,13 +111,11 @@ public class CarController : MonoBehaviour {
 
             if (rightWheel.GetGroundHit(out hit))
             {
-                if (hit.sidewaysSlip > .05 || hit.sidewaysSlip < -0.05)
+                if (hit.sidewaysSlip > .15 || hit.sidewaysSlip < -0.15)
                    driftParticleRight.gameObject.SetActive(true);
                    else
                    driftParticleRight.gameObject.SetActive(false);
             }
-
-          
         }
     }
 }
