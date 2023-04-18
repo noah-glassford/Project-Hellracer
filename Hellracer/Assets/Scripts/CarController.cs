@@ -33,7 +33,7 @@ public class CarController : MonoBehaviour {
     public bool ShouldAffectFOV;
     public AnimationCurve CameraFOVCurve;
     public float minSpeed = 0f;
-    public float maxSpeed = 25f;
+    public float maxSpeed = 10f;
     private float playerSpeed;
     private float FieldOfView;
 
@@ -82,7 +82,7 @@ public class CarController : MonoBehaviour {
 
         if (ShouldAffectFOV)
         {
-        playerSpeed = transform.GetChild(0).GetComponent<Rigidbody>().velocity.magnitude;
+        playerSpeed = GetComponent<Rigidbody>().velocity.magnitude;
       
         float parameter = Mathf.InverseLerp(minSpeed, maxSpeed, playerSpeed);
         Debug.Log(parameter);
