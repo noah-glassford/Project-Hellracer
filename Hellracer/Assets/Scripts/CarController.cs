@@ -27,10 +27,15 @@ public class CarController : MonoBehaviour {
     private PlayerInput playerInput;
     private float motorInput;
     private float steering;
+    [SerializeField]
+    private float maxBrake;
+    public float brakeForce;
+
 
     [SerializeField]
     CinemachineVirtualCamera VCam;
     public bool ShouldAffectFOV;
+    public float maxFov;
     public AnimationCurve CameraFOVCurve;
     public float minSpeed = 0f;
     public float maxSpeed = 10f;
@@ -39,7 +44,9 @@ public class CarController : MonoBehaviour {
 
     public float sideDriftCutoff; //this and tirespin cutoff affects when smoke particles are spawned
     public float tireSpinCutoff; 
+    public bool isDrifting;
 
+ 
     private void Start() 
     {
          foreach (AxleInfo axleInfo in axleInfos) 
@@ -74,22 +81,35 @@ public class CarController : MonoBehaviour {
         visualWheel.transform.position = position;
         visualWheel.transform.rotation = rotation;
     }
-     
+
+
+
+     private void CameraSpeedEffect()
+     {
+        if (ShouldAffectFOV)
+        {
+        float parameter = Mathf.InverseLerp(minSpeed, maxSpeed, playerSpeed);
+        parameter = CameraFOVCurve.Evaluate(parameter);
+        FieldOfView = Mathf.Lerp(60, 100, parameter);
+        VCam.m_Lens.FieldOfView = FieldOfView;
+
+        Vector3 cameraOffset = VCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
+        cameraOffset.z = Mathf.Lerp(-5, -1.5f, parameter);
+        VCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = cameraOffset;
+        
+        }
+     }
+
     public void FixedUpdate()
     {
         steering = maxSteeringAngle * inputActions.CarController.Steering.ReadValue<float>();
         motorInput = maxMotorTorque * inputActions.CarController.Accelerate.ReadValue<float>();
-
-        if (ShouldAffectFOV)
-        {
+        brakeForce = maxBrake * inputActions.CarController.Brake.ReadValue<float>();
+        float reverse = -75 * inputActions.CarController.Reverse.ReadValue<float>();
         playerSpeed = GetComponent<Rigidbody>().velocity.magnitude;
-      
-        float parameter = Mathf.InverseLerp(minSpeed, maxSpeed, playerSpeed);
-        Debug.Log(parameter);
-        parameter = CameraFOVCurve.Evaluate(parameter);
-        FieldOfView = Mathf.Lerp(60, 100, parameter);
-        VCam.m_Lens.FieldOfView = FieldOfView;
-        }
+
+        CameraSpeedEffect();
+
         foreach (AxleInfo axleInfo in axleInfos) 
         {
             if (axleInfo.steering) 
@@ -99,16 +119,15 @@ public class CarController : MonoBehaviour {
             }
             if (axleInfo.motor)
              {
-                if (motorInput >= 0)
-                {
-                    axleInfo.leftWheel.motorTorque = motorInput;
-                    axleInfo.rightWheel.motorTorque = motorInput;
-                }
-                else if (motorInput < 0)
-                {
-                    axleInfo.leftWheel.motorTorque = motorInput / 8;
-                    axleInfo.rightWheel.motorTorque = motorInput / 8;
-                }
+                
+                    axleInfo.leftWheel.motorTorque = motorInput + reverse;
+                    axleInfo.rightWheel.motorTorque = motorInput + reverse;
+              
+                    
+                    axleInfo.leftWheel.brakeTorque = brakeForce;
+                    axleInfo.rightWheel.brakeTorque = brakeForce;
+               
+
             }
 
             ApplyLocalPositionToVisuals(axleInfo.leftWheel);
